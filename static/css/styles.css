@@ -83,54 +83,19 @@ blockquote {
     position: absolute;
     top: 100%;
     left: 0;
-    right: 0;
+    width: 100%;
     background-color: white;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    opacity: 0;
-    visibility: hidden;
-    z-index: 1000;
+    border-top: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.dark .mobile-menu {
+    background-color: #1a202c;
+    border-top: 1px solid #4a5568;
 }
 
 .mobile-menu.active {
     display: block;
-    opacity: 1;
-    visibility: visible;
-}
-
-.mobile-menu a {
-    display: block;
-    padding: 0.5rem 0;
-    font-size: 1.1rem;
-    color: #4a5568;
-    text-decoration: none;
-    transition: color 0.2s ease-in-out;
-}
-
-.mobile-menu a:hover {
-    color: #2b6cb0;
-}
-
-.dark .mobile-menu {
-    background-color: #2d3748;
-}
-
-.dark .mobile-menu a {
-    color: #e2e8f0;
-}
-
-.dark .mobile-menu a:hover {
-    color: #63b3ed;
-}
-
-@media (min-width: 769px) {
-    .mobile-menu {
-        display: none !important;
-    }
-    .md\:flex {
-        display: flex !important;
-    }
 }
 
 /* Ensure dark mode toggle is always visible */
@@ -140,9 +105,36 @@ blockquote {
     }
 }
 
-/* Update text color for headings and links in dark mode */
+/* Ensure dark mode applies to the entire page */
+.dark body,
+.dark #main-container {
+    background-color: #1a202c;
+    min-height: 100vh;
+}
+
+/* Style for the content wrapper to extend full height */
+.content-wrapper {
+    min-height: 100vh;
+    padding: 1rem;  /* Add some padding to prevent content from touching the edges */
+}
+
+.dark .content-wrapper {
+    background-color: #1a202c;
+}
+
+/* Ensure all text is visible in dark mode */
+.dark {
+    color: #e2e8f0;
+}
+
+/* Style for the 'Recent Posts' heading in dark mode */
+.dark h1.text-3xl.recent-posts {
+    color: #63b3ed !important;  /* Light blue color for better visibility */
+}
+
+/* Ensure all headings are visible in dark mode */
 .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-    color: #f7fafc;  /* Even lighter gray for headings */
+    color: #f7fafc;
 }
 
 .dark a {
