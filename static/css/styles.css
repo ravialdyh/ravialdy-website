@@ -156,3 +156,33 @@ blockquote {
 .dark .prose tbody tr {
     border-bottom-color: #4a5568;
 }
+
+/* New styles for better visibility in dark mode */
+.dark h1 {
+    color: #f7fafc;  /* Light color for better visibility */
+}
+
+.dark .bg-gray-200 {
+    background-color: #4a5568;  /* Darker background for tags */
+}
+
+.dark .text-gray-700 {
+    color: #e2e8f0;  /* Lighter text color for tags */
+}
+
+/* Ensure sufficient contrast for all text elements in dark mode */
+.dark .text-gray-800 {
+    color: #f7fafc;
+}
+
+.dark .text-gray-900 {
+    color: #f7fafc;
+}
+
+.dark .hover\:text-gray-700:hover {
+    color: #e2e8f0;
+}
+
+.dark .hover\:text-gray-800:hover {
+    color: #f7fafc;
+}
