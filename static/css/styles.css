@@ -186,3 +186,8 @@ blockquote {
 .dark .hover\:text-gray-800:hover {
     color: #f7fafc;
 }
+
+/* New style for 'Recent Posts' heading in dark mode */
+.dark h1.recent-posts {
+    color: #f7fafc;  /* Light color for better visibility */
+}
