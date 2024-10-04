@@ -6,7 +6,7 @@
 /* Dark mode styles */
 .dark {
     background-color: #1a202c;
-    color: #e2e8f0;
+    color: #e2e8f0;  /* Light gray color for better contrast */
 }
 
 .dark .bg-white {
@@ -18,7 +18,7 @@
 }
 
 .dark .text-gray-600 {
-    color: #a0aec0;
+    color: #a0aec0;  /* Lighter gray for secondary text */
 }
 
 .dark .border-gray-200 {
@@ -41,8 +41,9 @@ pre {
     overflow-x: auto;
 }
 
-.dark pre {
-    background-color: #2d3748;
+.dark pre, .dark code {
+    background-color: #2d3748;  /* Slightly lighter than the main background */
+    color: #e2e8f0;
 }
 
 /* Styling for blockquotes */
@@ -106,4 +107,52 @@ blockquote {
     #dark-mode-toggle {
         margin-right: 0.5rem;
     }
+}
+
+/* Update text color for headings and links in dark mode */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: #f7fafc;  /* Even lighter gray for headings */
+}
+
+.dark a {
+    color: #63b3ed;  /* Light blue color for links */
+}
+
+/* Additional styles for better readability in dark mode */
+.dark .prose {
+    color: #e2e8f0;
+}
+
+.dark .prose strong {
+    color: #f7fafc;
+}
+
+.dark .prose em {
+    color: #e2e8f0;
+}
+
+.dark .prose ol > li::before {
+    color: #a0aec0;
+}
+
+.dark .prose ul > li::before {
+    background-color: #a0aec0;
+}
+
+.dark .prose hr {
+    border-color: #4a5568;
+}
+
+.dark .prose blockquote {
+    color: #e2e8f0;
+    border-left-color: #4a5568;
+}
+
+.dark .prose thead {
+    color: #f7fafc;
+    border-bottom-color: #4a5568;
+}
+
+.dark .prose tbody tr {
+    border-bottom-color: #4a5568;
 }
