@@ -80,36 +80,53 @@ blockquote {
 /* Mobile menu styles */
 .mobile-menu {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     opacity: 0;
     visibility: hidden;
+    z-index: 1000;
 }
 
-@media (max-width: 768px) {
+.mobile-menu.active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+    color: #4a5568;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.mobile-menu a:hover {
+    color: #2b6cb0;
+}
+
+.dark .mobile-menu {
+    background-color: #2d3748;
+}
+
+.dark .mobile-menu a {
+    color: #e2e8f0;
+}
+
+.dark .mobile-menu a:hover {
+    color: #63b3ed;
+}
+
+@media (min-width: 769px) {
     .mobile-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: white;
-        padding: 1rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .dark .mobile-menu {
-        background-color: #2d3748;
-    }
-
-    .mobile-menu.active {
-        display: block;
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .mobile-menu a {
-        display: block;
-        padding: 0.5rem 0;
-        font-size: 1.1rem;
+        display: none !important;
     }
 }
 
