@@ -170,24 +170,27 @@ blockquote {
     color: #e2e8f0;  /* Lighter text color for tags */
 }
 
-/* Ensure sufficient contrast for all text elements in dark mode */
-.dark .text-gray-800 {
-    color: #f7fafc;
+/* New style for 'Recent Posts' heading in dark mode */
+.dark h1.recent-posts {
+    color: #f7fafc;  /* Light color for better visibility */
 }
 
+/* Ensure sufficient contrast for all text elements in dark mode */
+.dark .text-gray-800,
 .dark .text-gray-900 {
     color: #f7fafc;
 }
 
-.dark .hover\:text-gray-700:hover {
+.dark .hover\:text-gray-700:hover,
+.dark .hover\:text-gray-800:hover {
     color: #e2e8f0;
 }
 
-.dark .hover\:text-gray-800:hover {
-    color: #f7fafc;
+/* Update text color for headings and links in dark mode */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: #f7fafc;  /* Even lighter gray for headings */
 }
 
-/* New style for 'Recent Posts' heading in dark mode */
-.dark h1.recent-posts {
-    color: #f7fafc;  /* Light color for better visibility */
+.dark a {
+    color: #63b3ed;  /* Light blue color for links */
 }
