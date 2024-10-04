@@ -128,6 +128,9 @@ blockquote {
     .mobile-menu {
         display: none !important;
     }
+    .md\:flex {
+        display: flex !important;
+    }
 }
 
 /* Ensure dark mode toggle is always visible */
