@@ -4,6 +4,31 @@
 }
 
 /* Dark mode styles */
+.dark {
+    background-color: #1a202c;
+    color: #e2e8f0;
+}
+
+.dark .bg-white {
+    background-color: #2d3748;
+}
+
+.dark .text-gray-700 {
+    color: #e2e8f0;
+}
+
+.dark .text-gray-600 {
+    color: #a0aec0;
+}
+
+.dark .border-gray-200 {
+    border-color: #4a5568;
+}
+
+.dark .shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
 .dark .math {
     color: #e2e8f0;
 }
@@ -17,7 +42,7 @@ pre {
 }
 
 .dark pre {
-    background-color: #1e293b;
+    background-color: #2d3748;
 }
 
 /* Styling for blockquotes */
@@ -48,4 +73,13 @@ blockquote {
 
 .dark #dark-mode-toggle:hover {
     background-color: #2d3748;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    display: none;
+}
+
+.mobile-menu.active {
+    display: block;
 }

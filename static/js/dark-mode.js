@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Update icon
         updateIcon(isDarkMode);
+
+        // Log dark mode state
+        console.log('Dark mode toggled:', isDarkMode);
     });
 
     // Function to update the icon based on the current mode
