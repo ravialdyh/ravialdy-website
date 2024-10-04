@@ -60,6 +60,7 @@ blockquote {
 /* Dark mode toggle button styles */
 #dark-mode-toggle {
     transition: background-color 0.3s, color 0.3s;
+    z-index: 20;
 }
 
 #dark-mode-toggle:hover {
@@ -80,6 +81,29 @@ blockquote {
     display: none;
 }
 
-.mobile-menu.active {
-    display: block;
+@media (max-width: 768px) {
+    .mobile-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .dark .mobile-menu {
+        background-color: #2d3748;
+    }
+
+    .mobile-menu.active {
+        display: block;
+    }
+}
+
+/* Ensure dark mode toggle is always visible */
+@media (max-width: 768px) {
+    #dark-mode-toggle {
+        margin-right: 0.5rem;
+    }
 }
