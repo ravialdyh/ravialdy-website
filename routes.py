@@ -1,21 +1,13 @@
 from flask import render_template, request, redirect, url_for, flash
 from app import app, db
-from models import User, Post, Category
-from werkzeug.security import generate_password_hash, check_password_hash
-from functools import wraps
-from urllib.parse import urlparse
-
-def login_required(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if 'user_id' not in session:
-            return redirect(url_for('login', next=request.url))
-        return f(*args, **kwargs)
-    return decorated_function
+from models import Post, Tag
+from sqlalchemy import desc, extract
+from datetime import datetime
 
 @app.route('/')
 def index():
     posts = Post.query.order_by(Post.date_posted.desc()).limit(5).all()
+    print(f"Number of posts retrieved: {len(posts)}")
     return render_template('index.html', posts=posts)
 
 @app.route('/post/<int:post_id>')
@@ -23,44 +15,38 @@ def post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template('post.html', post=post)
 
-@app.route('/admin', methods=['GET', 'POST'])
-@login_required
-def admin():
-    if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
-        category_id = request.form['category']
-        new_post = Post(title=title, content=content, category_id=category_id)
-        db.session.add(new_post)
-        db.session.commit()
-        flash('New post created!', 'success')
-        return redirect(url_for('admin'))
-    
-    categories = Category.query.all()
-    return render_template('admin.html', categories=categories)
-
 @app.route('/search')
 def search():
     query = request.args.get('query')
-    posts = Post.query.filter(Post.title.contains(query) | Post.content.contains(query)).all()
+    posts = Post.query.filter(
+        (Post.title.contains(query)) |
+        (Post.content.contains(query)) |
+        (Post.tags.any(Tag.name.contains(query)))
+    ).all()
     return render_template('search.html', posts=posts, query=query)
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        user = User.query.filter_by(username=username).first()
-        if user and user.check_password(password):
-            session['user_id'] = user.id
-            next_page = request.args.get('next')
-            if not next_page or urlparse(next_page).netloc != '':
-                next_page = url_for('index')
-            return redirect(next_page)
-        flash('Invalid username or password', 'error')
-    return render_template('login.html')
+@app.route('/archive')
+def archive():
+    posts = Post.query.order_by(Post.date_posted.desc()).all()
+    posts_by_year = {}
+    for post in posts:
+        year = post.date_posted.year
+        if year not in posts_by_year:
+            posts_by_year[year] = []
+        posts_by_year[year].append(post)
+    return render_template('archive.html', posts_by_year=posts_by_year)
 
-@app.route('/logout')
-def logout():
-    session.pop('user_id', None)
-    return redirect(url_for('index'))
+@app.route('/tags')
+def tags():
+    tags = Tag.query.all()
+    return render_template('tags.html', tags=tags)
+
+@app.route('/tag/<string:tag_name>')
+def tag(tag_name):
+    tag = Tag.query.filter_by(name=tag_name).first_or_404()
+    posts = tag.posts
+    return render_template('tag.html', tag=tag, posts=posts)
+
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %} - Tags{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-8">Tags</h1>
+
+<div class="flex flex-wrap">
+    {% for tag in tags %}
+    <a href="{{ url_for('tag', tag_name=tag.name) }}" class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-300 mr-2 mb-2">#{{ tag.name }}</a>
+    {% endfor %}
+</div>
+{% endblock %}

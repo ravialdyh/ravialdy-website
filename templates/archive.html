@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} - Archive{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-8">Archive</h1>
+
+{% for year, posts in posts_by_year.items() %}
+<div class="mb-8">
+    <h2 class="text-2xl font-bold mb-4">{{ year }}</h2>
+    <ul class="list-disc list-inside">
+        {% for post in posts %}
+        <li class="mb-2">
+            <a href="{{ url_for('post', post_id=post.id) }}" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">{{ post.title }}</a>
+            <span class="text-gray-600 dark:text-gray-400 text-sm"> - {{ post.date_posted.strftime('%B %d, %Y') }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}
+{% endblock %}

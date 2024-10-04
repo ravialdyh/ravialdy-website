@@ -1,4 +1,33 @@
-/* Add any custom styles here */
+/* Custom styles */
 .math {
     font-size: 1.1em;
+}
+
+/* Dark mode styles */
+.dark .math {
+    color: #e2e8f0;
+}
+
+/* Improved readability for code blocks */
+pre {
+    background-color: #f1f5f9;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.dark pre {
+    background-color: #1e293b;
+}
+
+/* Styling for blockquotes */
+blockquote {
+    border-left: 4px solid #3b82f6;
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+}
+
+.dark blockquote {
+    border-left-color: #60a5fa;
 }
