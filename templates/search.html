@@ -3,19 +3,26 @@
 {% block title %} - Search Results{% endblock %}
 
 {% block content %}
-<h1 class="text-3xl font-bold mb-8">Search Results for "{{ query }}"</h1>
+<h1 class="text-3xl font-bold mb-8">Search Results{% if query %} for "{{ query }}"{% endif %}</h1>
+
+<form action="{{ url_for('search') }}" method="get" class="mb-8">
+    <input type="text" name="query" placeholder="Search..." value="{{ query or '' }}" class="p-2 border rounded">
+    <button type="submit" class="bg-blue-500 text-white p-2 rounded">Search</button>
+</form>
 
 {% if posts %}
     {% for post in posts %}
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div class="bg-white dark:bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <h2 class="text-2xl font-bold mb-2">
-            <a href="{{ url_for('post', post_id=post.id) }}" class="text-blue-600 hover:text-blue-800">{{ post.title }}</a>
+            <a href="{{ url_for('post', post_id=post.id) }}" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">{{ post.title }}</a>
         </h2>
-        <p class="text-gray-600 text-sm mb-2">Posted on {{ post.date_posted.strftime('%B %d, %Y') }} in {{ post.category.name }}</p>
-        <p class="text-gray-700 text-base">{{ post.content[:200] }}{% if post.content|length > 200 %}...{% endif %}</p>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">Posted on {{ post.date_posted.strftime('%B %d, %Y') }}</p>
+        <p class="text-gray-700 dark:text-gray-300 text-base">{{ post.content[:200]|safe }}{% if post.content|length > 200 %}...{% endif %}</p>
     </div>
     {% endfor %}
+{% elif query %}
+    <p class="text-gray-700 dark:text-gray-300">No results found for "{{ query }}".</p>
 {% else %}
-    <p class="text-gray-700">No results found for "{{ query }}".</p>
+    <p class="text-gray-700 dark:text-gray-300">Enter a search query to find posts.</p>
 {% endif %}
 {% endblock %}

@@ -21,13 +21,20 @@ def post(post_id):
 
 @app.route('/search')
 def search():
-    query = request.args.get('query')
-    posts = Post.query.filter(
-        (Post.title.contains(query)) |
-        (Post.content.contains(query)) |
-        (Post.tags.any(Tag.name.contains(query)))
-    ).all()
-    return render_template('search.html', posts=posts, query=query)
+    try:
+        query = request.args.get('query', '')
+        if query:
+            posts = Post.query.filter(
+                (Post.title.ilike(f'%{query}%')) |
+                (Post.content.ilike(f'%{query}%')) |
+                (Post.tags.any(Tag.name.ilike(f'%{query}%')))
+            ).all()
+        else:
+            posts = []
+        return render_template('search.html', posts=posts, query=query)
+    except Exception as e:
+        app.logger.error(f"Error in search route: {str(e)}")
+        return render_template('error.html', error_message="An error occurred while processing your search. Please try again."), 500
 
 @app.route('/archive')
 def archive():
