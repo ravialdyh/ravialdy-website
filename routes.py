@@ -12,8 +12,12 @@ def index():
 
 @app.route('/post/<int:post_id>')
 def post(post_id):
-    post = Post.query.get_or_404(post_id)
-    return render_template('post.html', post=post)
+    try:
+        post = Post.query.get_or_404(post_id)
+        return render_template('post.html', post=post)
+    except Exception as e:
+        app.logger.error(f"Error accessing post {post_id}: {str(e)}")
+        return render_template('error.html', error_message="Unable to load the requested post."), 500
 
 @app.route('/search')
 def search():
