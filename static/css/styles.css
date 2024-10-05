@@ -4,26 +4,57 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe   
- UI Symbol";
-}
-
-/* Light mode background */
-@media (prefers-color-scheme: light) {
-  body {
-    background-image: url("{{ url_for('static', filename='img/math_background.jpg') }}");
-    background-repeat: repeat; 
-    background-size: cover; 
-  }
-}
-
-/* Dark mode background */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-image: url("{{ url_for('static', filename='img/math_background_dark.jpg') }}");
-    background-repeat: repeat; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
-  }
+    transition: background-image 0.3s ease-in-out;
+    background-image: url("../img/math_background.jpg");
+}
+
+body.dark {
+    background-image: url("../img/math_background_dark.jpg");
+}
+
+/* Ensure content is visible over the background */
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+body.dark .container {
+    background-color: rgba(26, 32, 44, 0.8) !important;
+}
+
+/* Dark mode styles */
+body.dark {
+    background-color: #1a202c;
+    color: #e2e8f0;
+}
+
+body.dark .bg-white {
+    background-color: #2d3748 !important;
+}
+
+body.dark .text-gray-700 {
+    color: #e2e8f0 !important;
+}
+
+body.dark .text-gray-600 {
+    color: #a0aec0 !important;
+}
+
+body.dark .border-gray-200 {
+    border-color: #4a5568 !important;
+}
+
+body.dark .shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .math {
+    color: #e2e8f0;
 }
 
 /* Dark mode styles */
