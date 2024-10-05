@@ -235,3 +235,10 @@ blockquote {
   margin-left: auto; /* Automatic left margin */
   margin-right: auto; /* Automatic right margin */
 }
+
+.blog-content {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
