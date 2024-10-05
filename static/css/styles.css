@@ -229,3 +229,9 @@ blockquote {
 .dark .text-gray-700 {
     color: #e2e8f0;  /* Lighter text color for tags */
 }
+
+.center-image {
+  display: block; /* Make the image a block-level element */
+  margin-left: auto; /* Automatic left margin */
+  margin-right: auto; /* Automatic right margin */
+}
