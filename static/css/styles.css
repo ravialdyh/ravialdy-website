@@ -3,6 +3,29 @@
     font-size: 1.1em;
 }
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe   
+ UI Symbol";
+}
+
+/* Light mode background */
+@media (prefers-color-scheme: light) {
+  body {
+    background-image: url("{{ url_for('static', filename='img/math_background.jpg') }}");
+    background-repeat: repeat; 
+    background-size: cover; 
+  }
+}
+
+/* Dark mode background */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image: url("{{ url_for('static', filename='img/math_background_dark.jpg') }}");
+    background-repeat: repeat; 
+    background-size: cover;
+  }
+}
+
 /* Dark mode styles */
 .dark {
     background-color: #1a202c;
