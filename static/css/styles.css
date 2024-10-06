@@ -16,15 +16,19 @@ body.dark {
     background-image: url("../img/math_background_dark.jpg");
 }
 
-/* Ensure content is visible over the background */
-.container {
-    background-color: rgba(255, 255, 255, 0.8);
+.content-wrapper {
+    background-color: rgba(255, 255, 255, 0.8); /* White background for light mode */
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 10px; 
 }
 
-body.dark .container {
-    background-color: rgba(26, 32, 44, 0.8) !important;
+.content-wrapper .grid {
+    max-width: 1200px; /* Adjust this value as needed */
+    margin: 0 auto;
+}
+
+.dark .content-wrapper {
+    background-color: rgba(26, 32, 44, 0.8); /* Dark grey for dark mode */
 }
 
 /* Dark mode styles */
