@@ -16,19 +16,46 @@ body.dark {
     background-image: url("../img/math_background_dark.jpg");
 }
 
+/* Ensure consistent width for all content boxes */
+.content-box {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Remove any conflicting styles */
 .content-wrapper {
-    background-color: rgba(255, 255, 255, 0.8); /* White background for light mode */
-    padding: 20px;
-    border-radius: 10px; 
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
 }
 
-.content-wrapper .grid {
-    max-width: 1200px; /* Adjust this value as needed */
-    margin: 0 auto;
+/* Ensure consistent styling for all main content blocks */
+.bg-white,
+.dark .bg-gray-800 {
+    @apply rounded-lg shadow-md;
 }
 
-.dark .content-wrapper {
-    background-color: rgba(26, 32, 44, 0.8); /* Dark grey for dark mode */
+/* Add some spacing between content blocks */
+.mb-8 {
+    margin-bottom: 2rem;
+}
+
+/* Ensure responsiveness */
+@media (max-width: 640px) {
+    .container {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* --- Navigation Styles --- */ 
+nav .container {
+    px-4 py-3 md:flex md:justify-between md:items-center 
 }
 
 /* Dark mode styles */
