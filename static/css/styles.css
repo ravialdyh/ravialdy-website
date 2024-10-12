@@ -24,13 +24,11 @@ body.dark {
     margin-right: auto;
 }
 
-/* Remove any conflicting styles */
 .content-wrapper {
     width: 100%;
     max-width: 100%;
-    background-color: transparent;
-    padding: 0;
-    border-radius: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Ensure consistent styling for all main content blocks */
@@ -54,8 +52,39 @@ body.dark {
 }
 
 /* --- Navigation Styles --- */ 
-nav .container {
-    px-4 py-3 md:flex md:justify-between md:items-center 
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 640px) {
+    .nav-container {
+        max-width: 640px;
+    }
+}
+
+@media (min-width: 768px) {
+    .nav-container {
+        max-width: 768px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .nav-container {
+        max-width: 1024px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .nav-container {
+        max-width: 1280px;
+    }
 }
 
 /* Dark mode styles */
@@ -88,36 +117,6 @@ body.dark .math {
     color: #e2e8f0;
 }
 
-/* Dark mode styles */
-.dark {
-    background-color: #1a202c;
-    color: #e2e8f0;  /* Light gray color for better contrast */
-}
-
-.dark .bg-white {
-    background-color: #2d3748;
-}
-
-.dark .text-gray-700 {
-    color: #e2e8f0;
-}
-
-.dark .text-gray-600 {
-    color: #a0aec0;  /* Lighter gray for secondary text */
-}
-
-.dark .border-gray-200 {
-    border-color: #4a5568;
-}
-
-.dark .shadow-md {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
-}
-
-.dark .math {
-    color: #e2e8f0;
-}
-
 /* Improved readability for code blocks */
 pre {
     background-color: #f1f5f9;
@@ -127,7 +126,7 @@ pre {
 }
 
 .dark pre, .dark code {
-    background-color: #2d3748;  /* Slightly lighter than the main background */
+    background-color: #2d3748;
     color: #e2e8f0;
 }
 
@@ -144,21 +143,21 @@ blockquote {
 }
 
 /* Dark mode toggle button styles */
-#dark-mode-toggle {
+#dark-mode-toggle, #dark-mode-toggle-desktop {
     transition: background-color 0.3s, color 0.3s;
     z-index: 20;
 }
 
-#dark-mode-toggle:hover {
+#dark-mode-toggle:hover, #dark-mode-toggle-desktop:hover {
     transform: scale(1.1);
 }
 
-.dark #dark-mode-toggle {
+.dark #dark-mode-toggle, .dark #dark-mode-toggle-desktop {
     background-color: #4a5568;
     color: #e2e8f0;
 }
 
-.dark #dark-mode-toggle:hover {
+.dark #dark-mode-toggle:hover, .dark #dark-mode-toggle-desktop:hover {
     background-color: #2d3748;
 }
 
@@ -234,16 +233,6 @@ blockquote {
     min-height: 100vh;
 }
 
-/* Style for the content wrapper to extend full height */
-.content-wrapper {
-    min-height: 100vh;
-    padding: 1rem;  /* Add some padding to prevent content from touching the edges */
-}
-
-.dark .content-wrapper {
-    background-color: #1a202c;
-}
-
 /* Ensure all text is visible in dark mode */
 .dark {
     color: #e2e8f0;
@@ -251,7 +240,7 @@ blockquote {
 
 /* Style for the 'Recent Posts' heading in dark mode */
 .dark h1.text-3xl.recent-posts {
-    color: #63b3ed !important;  /* Light blue color for better visibility */
+    color: #63b3ed !important;
 }
 
 /* Ensure all headings are visible in dark mode */
@@ -260,7 +249,7 @@ blockquote {
 }
 
 .dark a {
-    color: #63b3ed;  /* Light blue color for links */
+    color: #63b3ed;
 }
 
 /* Additional styles for better readability in dark mode */
@@ -304,26 +293,55 @@ blockquote {
 
 /* New styles for better visibility in dark mode */
 .dark h1 {
-    color: #f7fafc;  /* Light color for better visibility */
+    color: #f7fafc;
 }
 
 .dark .bg-gray-200 {
-    background-color: #4a5568;  /* Darker background for tags */
+    background-color: #4a5568;
 }
 
 .dark .text-gray-700 {
-    color: #e2e8f0;  /* Lighter text color for tags */
+    color: #e2e8f0;
 }
 
 .center-image {
-  display: block; /* Make the image a block-level element */
-  margin-left: auto; /* Automatic left margin */
-  margin-right: auto; /* Automatic right margin */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .blog-content {
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* Limit to 2 lines */
-  -webkit-box-orient: vertical;  
-  overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+/* New styles for aligning 'Yay Blog!' with '😊Welcome to Yay!😊' */
+.yay-blog-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.welcome-text {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .welcome-text {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    .yay-blog-title {
+        font-size: 1.3rem;
+    }
 }
