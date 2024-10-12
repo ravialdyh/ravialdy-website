@@ -1,4 +1,9 @@
 /* Custom styles */
+
+body, .bg-white, .text-gray-700, .text-gray-600, .border-gray-200 {
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
 .math {
     font-size: 1.1em;
 }
@@ -42,48 +47,40 @@ body.dark {
     margin-bottom: 2rem;
 }
 
-/* Ensure responsiveness */
-@media (max-width: 640px) {
-    .container {
-        width: 100%;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-}
-
 /* --- Navigation Styles --- */ 
 .nav-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
     max-width: 100%;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
 
-@media (min-width: 640px) {
-    .nav-container {
-        max-width: 640px;
-    }
-}
-
 @media (min-width: 768px) {
     .nav-container {
-        max-width: 768px;
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 
-@media (min-width: 1024px) {
-    .nav-container {
-        max-width: 1024px;
-    }
+.yay-blog-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
 }
 
-@media (min-width: 1280px) {
-    .nav-container {
-        max-width: 1280px;
+.welcome-text {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .welcome-text {
+        margin-top: 0.5rem;
+        font-size: 1.2rem;
     }
 }
 
@@ -227,81 +224,25 @@ blockquote {
 }
 
 /* Ensure dark mode applies to the entire page */
-.dark body,
-.dark #main-container {
+.dark body {
     background-color: #1a202c;
-    min-height: 100vh;
-}
-
-/* Ensure all text is visible in dark mode */
-.dark {
     color: #e2e8f0;
 }
 
-/* Style for the 'Recent Posts' heading in dark mode */
-.dark h1.text-3xl.recent-posts {
-    color: #63b3ed !important;
-}
-
-/* Ensure all headings are visible in dark mode */
-.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-    color: #f7fafc;
-}
-
-.dark a {
-    color: #63b3ed;
-}
-
-/* Additional styles for better readability in dark mode */
-.dark .prose {
-    color: #e2e8f0;
-}
-
-.dark .prose strong {
-    color: #f7fafc;
-}
-
-.dark .prose em {
-    color: #e2e8f0;
-}
-
-.dark .prose ol > li::before {
-    color: #a0aec0;
-}
-
-.dark .prose ul > li::before {
-    background-color: #a0aec0;
-}
-
-.dark .prose hr {
-    border-color: #4a5568;
-}
-
-.dark .prose blockquote {
-    color: #e2e8f0;
-    border-left-color: #4a5568;
-}
-
-.dark .prose thead {
-    color: #f7fafc;
-    border-bottom-color: #4a5568;
-}
-
-.dark .prose tbody tr {
-    border-bottom-color: #4a5568;
-}
-
-/* New styles for better visibility in dark mode */
-.dark h1 {
-    color: #f7fafc;
-}
-
-.dark .bg-gray-200 {
-    background-color: #4a5568;
+.dark .bg-white {
+    background-color: #2d3748 !important;
 }
 
 .dark .text-gray-700 {
-    color: #e2e8f0;
+    color: #e2e8f0 !important;
+}
+
+.dark .text-gray-600 {
+    color: #a0aec0 !important;
+}
+
+.dark .border-gray-200 {
+    border-color: #4a5568 !important;
 }
 
 .center-image {
@@ -315,12 +256,6 @@ blockquote {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;  
     overflow: hidden;
-}
-
-/* New styles for aligning 'Yay Blog!' with '😊Welcome to Yay!😊' */
-.yay-blog-title {
-    font-size: 1.5rem;
-    font-weight: bold;
 }
 
 .welcome-text {
@@ -339,9 +274,5 @@ blockquote {
         margin-left: 0;
         margin-top: 0.5rem;
         font-size: 1.2rem;
-    }
-
-    .yay-blog-title {
-        font-size: 1.3rem;
     }
 }
