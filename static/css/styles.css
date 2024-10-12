@@ -1,8 +1,46 @@
 /* Custom styles */
 
-body, .bg-white, .text-gray-700, .text-gray-600, .border-gray-200 {
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1a202c;
+    --bg-color-dark: #1a202c;
+    --text-color-dark: #e2e8f0;
 }
+
+body, html {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body, html.dark body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+html.dark {
+    --bg-color: var(--bg-color-dark);
+    --text-color: var(--text-color-dark);
+}
+
+/* Modify your existing dark mode styles */
+html.dark .bg-white {
+    background-color: #2d3748 !important;
+}
+
+html.dark .text-gray-700,
+html.dark .text-gray-800 {
+    color: var(--text-color-dark) !important;
+}
+
+html.dark .text-gray-600 {
+    color: #a0aec0 !important;
+}
+
+/* Add this new rule for the welcoming text */
+html.dark .text-gray-800 {
+    color: var(--text-color-dark) !important;
+}
+
+/* The rest of your CSS remains the same */
 
 .math {
     font-size: 1.1em;
