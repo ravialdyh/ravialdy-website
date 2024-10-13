@@ -87,7 +87,9 @@
                             </a>
                         </div>
                         <div class="flex justify-center items-center">
-                            <img src="{{ url_for('static', filename='img/main_logo.jpg') }}" alt="Descriptive alt text" class="w-1/4 h-auto rounded-lg shadow-md">
+                            <div id="image-container" class="relative w-1/4 h-auto perspective-1000">
+                                <img src="{{ url_for('static', filename='img/main_logo.jpg') }}" alt="Descriptive alt text" class="w-full h-auto rounded-lg shadow-md transition-transform duration-300 ease-out">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,6 +106,7 @@
     </div>
     <script src="{{ url_for('static', filename='js/dark-mode.js') }}"></script>
     <script src="{{ url_for('static', filename='js/mobile-menu.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/3d-hover.js') }}"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>
