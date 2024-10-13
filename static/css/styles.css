@@ -196,6 +196,18 @@ blockquote {
     background-color: #2d3748;
 }
 
+.dark .bg-gray-200 {
+    background-color: #1a202c !important;
+}
+
+.dark .text-gray-700 {
+    color: #e2e8f0 !important;
+}
+
+.dark .hover\:bg-gray-300:hover {
+    background-color: #4a5568 !important;
+}
+
 /* Mobile menu styles */
 .mobile-menu {
     display: none;
@@ -234,6 +246,17 @@ blockquote {
 
 .dark .mobile-menu a:hover {
     background-color: #4a5568;
+}
+
+@media (max-width: 768px) {
+    #mobile-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #2d3748;
+        z-index: 50;
+    }
 }
 
 /* Ensure dark mode toggle is always visible */
